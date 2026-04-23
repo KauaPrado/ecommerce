@@ -1,0 +1,19 @@
+# Pastas de build e compilação
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# Pastas e arquivos do Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Arquivos de log e testes
+*.log
+TestResults/
+
+# Variáveis de ambiente locais (caso use no futuro)
+*.env
+appsettings.Development.json
