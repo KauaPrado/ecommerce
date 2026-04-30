@@ -21,7 +21,7 @@ namespace EcommerceAPI.Application.Services
 
         public async Task<Product> CreateProductAsync(CreateProductDTO dto)
         {
-            // O Service converte o DTO burro em uma Entidade Rica de Domínio
+
             var product = new Product(
                 dto.Name,
                 dto.Description,

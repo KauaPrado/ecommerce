@@ -1,6 +1,6 @@
 ﻿
 
-using EcommerceAPI.Domain.Entities; // Ajuste para o seu namespace
+using EcommerceAPI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceAPI.Infrastructure.Data
@@ -9,7 +9,7 @@ namespace EcommerceAPI.Infrastructure.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        // Estas propriedades representam as tabelas no seu banco de dados
+        public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -18,7 +18,7 @@ namespace EcommerceAPI.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Boa prática: Configurar a precisão das casas decimais para evitar avisos do EF Core
+
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18,2)");

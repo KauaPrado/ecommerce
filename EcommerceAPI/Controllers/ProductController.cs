@@ -1,5 +1,6 @@
 ﻿using EcommerceAPI.Application.DTOs;
 using EcommerceAPI.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcommerceAPI.Controllers
@@ -10,7 +11,7 @@ namespace EcommerceAPI.Controllers
     {
         private readonly IProductService _productService;
 
-        // Injetando a Interface do Serviço (A Mágica do .NET!)
+
         public ProductController(IProductService productService)
         {
             _productService = productService;
@@ -24,12 +25,10 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductDTO request)
         {
-            // O Controller apenas repassa o DTO para o Service cuidar da regra de negócio
             var product = await _productService.CreateProductAsync(request);
-
-            // Retorna o status 201 (Criado com Sucesso) e o objeto que foi salvo
             return CreatedAtAction(nameof(GetProducts), new { id = product.Id }, product);
         }
     }

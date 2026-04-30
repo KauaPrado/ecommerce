@@ -5,7 +5,7 @@
         public Guid ProductId { get; private set; }
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
-        public Guid OrderId { get; private set; } // Relacionamento com o Pedido
+        public Guid OrderId { get; private set; } 
 
         protected OrderItem() { }
 
